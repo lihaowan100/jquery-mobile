@@ -13,7 +13,14 @@ define( [
 
 // TODO rename filterCallback/deprecate and default to the item itself as the first argument
 var defaultFilterCallback = function( index, searchValue ) {
-	return ( ( "" + ( $.mobile.getAttribute( this, "filtertext" ) || $( this ).text() ) )
+	return ( ( "" + ( $.mobile.getAttribute( this, "filtertext" ) ||
+
+		// Special case for button widgets for backcompat with the 1.4.0 implementation of the
+		// button widget where the value appeared as a text node child of the wrapper we no longer
+		// create for it
+		( ( this.nodeName.toLowerCase() === "input" && this.getAttribute( "type" ) === "button" ) ?
+			this.getAttribute( "value" ) :
+			$( this ).text() ) ) )
 		.toLowerCase().indexOf( searchValue ) === -1 );
 };
 
