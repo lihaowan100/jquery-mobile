@@ -7,6 +7,7 @@
 define( [
 	"jquery",
 	"../../core",
+	"../../jquery-ui/button",
 	"../../widget" ], function( jQuery ) {
 //>>excludeEnd("jqmBuildExclude");
 (function( $, undefined ) {
