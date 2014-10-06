@@ -71,14 +71,13 @@ $.widget( "mobile.table", $.mobile.table, {
 	_addToggles: function( menu, keep ) {
 		var inputs,
 			checkboxIndex = 0,
-			opts = this.options,
-			container = menu.controlgroup( "container" );
+			opts = this.options;
 
 		// allow update of menu on refresh (fixes #5880)
 		if ( keep ) {
 			inputs = menu.find( "input" );
 		} else {
-			container.empty();
+			menu.empty();
 		}
 
 		// create the hide/show toggles
@@ -98,7 +97,7 @@ $.widget( "mobile.table", $.mobile.table, {
 						( header.children( "abbr" ).first().attr( "title" ) ||
 							header.text() ) +
 						"</label>" )
-						.appendTo( container )
+						.appendTo( menu )
 						.children( 0 )
 						.checkboxradio( {
 							theme: opts.columnPopupTheme
